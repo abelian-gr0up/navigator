@@ -6,18 +6,22 @@
 
 Simply put the navigator.js file in your project folder
 and link to it with a `<script>` tag:
+
 ```HTML
 <script src="/path/to/navigator.js"></script>
 ```
+
+If you want to work with the ES6 Module Syntax, then use navigator.es6.js.
 
 ### Usage
 
 First you have to create a root folder for all your pages.
 Then write another script to initialize the navigator:
+
 ```HTML
 <script defer>
-  import { navigator } from 'navigator.js';
-  
+  /* For ES6 Module Syntax use: import { navigator } from 'navigator.js'; and add type="module" to the script tag*/
+
   var nav = new navigator({
     root: "/path/to/root/folder", // your root folder
     links: "nav-link", // CSS Selector for nav links
@@ -32,6 +36,7 @@ Put this in your `<head>` element.
 
 Now we can start writing some HTML.
 First we create a header with navigation:
+
 ```HTML
 <header>
   <ul id="nav">
@@ -43,6 +48,7 @@ First we create a header with navigation:
 ```
 
 And add a little bit CSS:
+
 ```CSS
 nav-link {
   color: #0366d6;
@@ -67,18 +73,20 @@ header ul#nav {
 ```
 
 Next we need an output:
+
 ```HTML
 <div output></div>
 ```
 
 You can leave it empty or build a cool loading animation with it:
+
 ```HTML
 <div output>
   <div id="loading">
     <svg
-         width="36px" 
-         height="36px" 
-         xmlns="http://www.w3.org/2000/svg" 
+         width="36px"
+         height="36px"
+         xmlns="http://www.w3.org/2000/svg"
          viewBox="0 0 100 100">
       <g transform="rotate(17.3525 50 50)">
         <path
@@ -91,7 +99,7 @@ You can leave it empty or build a cool loading animation with it:
               d="M49 3L49 27L61 15L49 3"
               fill="#0055a5">
         </path>
-        <animateTransform 
+        <animateTransform
                           attributeName="transform"
                           type="rotate"
                           calcMode="linear"
@@ -133,4 +141,4 @@ You can now create your pages. your root folder should look like this:
 <img src="images/root-folder.png" height="182" width="466" />
 
 And now you're done.
-__You have created your first *navigator* project!__
+**You have created your first _navigator_ project!**

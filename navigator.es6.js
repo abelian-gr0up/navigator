@@ -11,37 +11,43 @@
 /**
  * Navigator Class
  * @class
- * @param {Object} confObj - Configuration Object
- * @param {string} confObj.root - Root folder
- * @param {string} confObj.links - Selector for NavLinks
- * @param {string} confObj.output - Selector for the output
- * @param {string} confObj.standard - Standard NavURL
- * @param {string} [confObj.extension=html] - File extension for navigations (e.g. php)
  */
-function navigator(confObj) {
-    this.root = confObj.root;
-    this.links = confObj.links;
-    this.extension = confObj.extension || 'html';
+export class navigator {
+    /**
+     * @desc Constructor
+     * @constructs navigator
+     * @param {Object} confObj - Configuration Object
+     * @param {string} confObj.root - Root folder
+     * @param {string} confObj.links - Selector for NavLinks
+     * @param {string} confObj.output - Selector for the output
+     * @param {string} confObj.standard - Standard NavURL
+     * @param {string} [confObj.extension=html] - File extension for navigations (e.g. php)
+     */
+    constructor(confObj) {
+        this.root = confObj.root;
+        this.links = confObj.links;
+        this.extension = confObj.extension || 'html';
 
-    document.addEventListener('DOMContentLoaded', () => {
-        this.output = document.querySelector(confObj.output);
-        this.navLinks(document.querySelectorAll(this.links));
+        document.addEventListener('DOMContentLoaded', () => {
+            this.output = document.querySelector(confObj.output);
+            this.navLinks(document.querySelectorAll(this.links));
 
-        window.location.pathname === '/' ?
-            this.navigate(confObj.standard) :
-            this.navigate(window.location.pathname, window.location.search);
-    });
+            window.location.pathname === '/' ?
+                this.navigate(confObj.standard) :
+                this.navigate(window.location.pathname, window.location.search);
+        });
 
-    window.addEventListener('popstate', () => {
-        this.navigate(window.history.state.page);
-    });
+        window.addEventListener('popstate', () => {
+            this.navigate(window.history.state.page);
+        });
+    }
 
     /**
      * @func
      * @desc NavLinks initialization
      * @param {NodeListOf<HTMLElemen>} navLinksList - List with all NavLinks
      */
-    this.navLinks = (navLinksList) => {
+    navLinks(navLinksList) {
         Array.from(navLinksList).forEach(el => {
             el.addEventListener('click', e => {
                 e.preventDefault();
@@ -66,7 +72,7 @@ function navigator(confObj) {
      * @param {string} navURLSearchParams - SearchParams to attach to URL (e.g. ?id=1)
      * @async
      */
-    this.navigate = (navURL, navURLSearchParams = false) => {
+    navigate(navURL, navURLSearchParams = false) {
         var navArray = navURL.split('?');
         navURL = navArray[0];
         navURLSearchParams =
