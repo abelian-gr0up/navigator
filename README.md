@@ -20,7 +20,12 @@ Then write another script to initialize the navigator:
 
 ```HTML
 <script defer>
-  /* For ES6 Module Syntax use: import { navigator } from 'navigator.js'; and add type="module" to the script tag */
+  /**
+   * For ES6 Module Syntax use:
+   * import { navigator } from 'navigator.js';
+   *
+   * and add type="module" to the script tag.
+   */
 
   var nav = new navigator({
     root: "/path/to/root/folder", // your root folder
