@@ -37,7 +37,7 @@ Then write another script to initialize the navigator:
 </script>
 ```
 
-Put this in your `<head>` element.
+Place all the `<script>` tags in your `<head>` element.
 
 Now we can start writing some HTML.
 First we create a header with navigation:
