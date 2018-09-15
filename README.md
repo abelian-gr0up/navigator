@@ -129,7 +129,7 @@ You can leave it empty or build a cool loading animation with it:
 }
 ```
 
-You can now create your pages. your root folder should look like this:
+You can now create your pages. Your root folder should look like this:
 <img src="images/root-folder.png" height="182" width="466" />
 
 And now you're done.
