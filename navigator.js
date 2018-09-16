@@ -19,71 +19,71 @@
  * @param {string} [confObj.extension=html] - File extension for navigations (e.g. php)
  */
 function navigator(confObj) {
-    this.root = confObj.root;
-    this.links = confObj.links;
-    this.extension = confObj.extension || 'html';
+  this.root = confObj.root;
+  this.links = confObj.links;
+  this.extension = confObj.extension || 'html';
 
-    document.addEventListener('DOMContentLoaded', () => {
-        this.output = document.querySelector(confObj.output);
-        this.navLinks(document.querySelectorAll(this.links));
+  document.addEventListener('DOMContentLoaded', () => {
+    this.output = document.querySelector(confObj.output);
+    this.navLinks(document.querySelectorAll(this.links));
 
-        window.location.pathname === '/' ?
-            this.navigate(confObj.standard) :
-            this.navigate(window.location.pathname, window.location.search);
+    window.location.pathname === '/'
+      ? this.navigate(confObj.standard)
+      : this.navigate(window.location.pathname, window.location.search);
+  });
+
+  window.addEventListener('popstate', () => {
+    this.navigate(window.history.state.page);
+  });
+
+  /**
+   * @func
+   * @desc NavLinks initialization
+   * @param {NodeListOf<HTMLElemen>} navLinksList - List with all NavLinks
+   */
+  this.navLinks = navLinksList => {
+    Array.from(navLinksList).forEach(el => {
+      el.addEventListener('click', e => {
+        e.preventDefault();
+        var navURL = el.getAttribute('href');
+
+        var state = {
+          page: navURL,
+          host: window.location.host,
+          port: window.location.port
+        };
+        window.history.pushState(state, navURL, navURL);
+
+        this.navigate(navURL);
+      });
     });
+  };
 
-    window.addEventListener('popstate', () => {
-        this.navigate(window.history.state.page);
-    });
+  /**
+   * @func
+   * @desc Navigate by URL
+   * @param {string} navURL - URL to Navigate (e.g. /start)
+   * @param {string} navURLSearchParams - SearchParams to attach to URL (e.g. ?id=1)
+   * @async
+   */
+  this.navigate = (navURL, navURLSearchParams = false) => {
+    var navArray = navURL.split('?');
+    navURL = navArray[0];
+    navURLSearchParams =
+      navArray[1] === undefined ? navURLSearchParams : '?' + navArray[1];
 
-    /**
-     * @func
-     * @desc NavLinks initialization
-     * @param {NodeListOf<HTMLElemen>} navLinksList - List with all NavLinks
-     */
-    this.navLinks = (navLinksList) => {
-        Array.from(navLinksList).forEach(el => {
-            el.addEventListener('click', e => {
-                e.preventDefault();
-                var navURL = el.getAttribute('href');
-
-                var state = {
-                    page: navURL,
-                    host: window.location.host,
-                    port: window.location.port
-                };
-                window.history.pushState(state, navURL, navURL);
-
-                this.navigate(navURL);
-            });
-        });
-    };
-
-    /**
-     * @func
-     * @desc Navigate by URL
-     * @param {string} navURL - URL to Navigate (e.g. /start)
-     * @param {string} navURLSearchParams - SearchParams to attach to URL (e.g. ?id=1)
-     * @async
-     */
-    this.navigate = (navURL, navURLSearchParams = false) => {
-        var navArray = navURL.split('?');
-        navURL = navArray[0];
-        navURLSearchParams =
-            navArray[1] === undefined ? navURLSearchParams : '?' + navArray[1];
-
-        fetch(
-                navURLSearchParams ?
-                `../${this.root}${navURL}.${this.extension}${navURLSearchParams}` :
-                `../${this.root}${navURL}.${this.extension}`
-            )
-            .then(response => response.text())
-            .then(text => {
-                this.output.innerHTML = text;
-                this.navLinks(this.output.querySelectorAll(this.links));
-            })
-            .catch(error => {
-                throw new Error(error);
-            });
-    };
+    fetch(
+      navURLSearchParams
+        ? `${this.root}${navURL}.${this.extension}${navURLSearchParams}`
+        : `${this.root}${navURL}.${this.extension}`
+    )
+      .then(response => response.text())
+      .then(text => {
+        this.output.innerHTML = text;
+        this.navLinks(this.output.querySelectorAll(this.links));
+      })
+      .catch(error => {
+        throw new Error(error);
+      });
+  };
 }

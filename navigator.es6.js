@@ -80,8 +80,8 @@ export class navigator {
 
         fetch(
                 navURLSearchParams ?
-                `../${this.root}${navURL}.${this.extension}${navURLSearchParams}` :
-                `../${this.root}${navURL}.${this.extension}`
+                `${this.root}${navURL}.${this.extension}${navURLSearchParams}` :
+                `${this.root}${navURL}.${this.extension}`
             )
             .then(response => response.text())
             .then(text => {
