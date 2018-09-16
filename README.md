@@ -55,6 +55,15 @@ First we create a header with navigation:
 And add a little bit CSS:
 
 ```CSS
+/* Basic Styles */
+
+html,
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
 nav-link {
   color: #0366d6;
   text-decoration: none;
@@ -63,6 +72,8 @@ nav-link {
 nav-link:hover, nav-link:active {
   text-decoration: underline;
 }
+
+/* Header */
 
 header {
   width: 100%;
@@ -121,6 +132,7 @@ You can leave it empty or build a cool loading animation with it:
 ```
 
 ```CSS
+/* Output */
 [output] {
   width: 100%;
   max-height: 100%;
@@ -132,6 +144,8 @@ You can leave it empty or build a cool loading animation with it:
     padding: 0 10px;
   }
 */
+
+/* Loading Animation */
 
 [output] div#loading {
   width: 100%;
