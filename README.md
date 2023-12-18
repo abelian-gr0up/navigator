@@ -1,6 +1,6 @@
-# navigator <img src="images/icon.svg" align="left" height="36" width="36" > - A JS Single-Page Library
+# Navigator <img src="images/icon.svg" align="left" height="36" width="36" > - A JS Single-Page Library
 
-navigator is a small JS library with which you can easily create a single-page navigation on your websites.
+Navigator is a small JS library with which you can easily create a single-page navigation on your websites.
 
 ## Installation
 
