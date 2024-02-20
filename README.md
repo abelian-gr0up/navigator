@@ -1,11 +1,10 @@
-# navigator <img src="images/icon.svg" align="left" height="36" width="36" >
+# Navigator <img src="images/icon.svg" align="left" height="36" width="36" > - A JS Single-Page Library
 
-## A JS Single-Page Library
+_Navigator_ is a small JS library with which you can easily create a single-page navigation on your websites.
 
-### Installation
+## Installation
 
-Simply put the navigator.js file in your project folder
-and link to it with a `<script>` tag:
+Simply put the navigator.js file in your project folderand link to it with a `<script>` tag:
 
 ```HTML
 <script src="/path/to/navigator.js"></script>
@@ -13,9 +12,9 @@ and link to it with a `<script>` tag:
 
 If you want to work with the ES6 Module Syntax, then use navigator.es6.js.
 
-### Usage
+## Usage
 
-First you have to create a root folder for all your pages.
+First you have to create a root folder for all your pages.  
 Then write another script to initialize the navigator:
 
 ```HTML
@@ -39,7 +38,7 @@ Then write another script to initialize the navigator:
 
 Place all the `<script>` tags in your `<head>` element.
 
-Now we can start writing some HTML.
+Now we can start writing some HTML.  
 First we create a header with navigation:
 
 ```HTML
@@ -94,8 +93,9 @@ Next we need an output:
 <div output></div>
 ```
 
-You can leave it empty or build a cool loading animation with it:
+It can be left empty or build with a cool loading animtaion as in the following example:
 
+HTML:  
 ```HTML
 <div output>
   <div id="loading">
@@ -131,6 +131,7 @@ You can leave it empty or build a cool loading animation with it:
 </div>
 ```
 
+CSS:  
 ```CSS
 /* Output */
 [output] {
@@ -156,8 +157,14 @@ You can leave it empty or build a cool loading animation with it:
 }
 ```
 
-You can now create your pages. Your root folder should look like this:
+You can create your pages like this:  
 <img src="images/root-folder.png" height="182" width="466" />
 
-And now you're done.
-**You have created your first _navigator_ project!**
+And you're done.  
+**Congratulations! You officially have created your first _navigator_ project!**
+
+## License
+
+Navigator - A JS Single-Page Library Copyright (C) 2018 Felix Rewer
+
+For more information see the LICENSE.md file.
