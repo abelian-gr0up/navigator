@@ -1,5 +1,5 @@
 Navigator - A JS Single-Page Library
-Copyright (C) 2018  Felix Rewer
+Copyright (C) 2024  Annika Rewer
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
