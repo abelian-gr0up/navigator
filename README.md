@@ -165,6 +165,6 @@ And you're done.
 
 ## License
 
-Navigator - A JS Single-Page Library Copyright (C) 2018 Felix Rewer
+Navigator - A JS Single-Page Library Copyright (C) 2024 Annika Rewer
 
 For more information see the LICENSE.md file.
